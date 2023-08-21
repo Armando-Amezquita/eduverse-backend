@@ -1,7 +1,7 @@
 const express = require('express');
 const helmet = require('helmet')
 const cors = require('cors'); 
-const router = require('./src/router');
+const { router } = require('./src/router');
 const socketIO = require('./src/socket')
 const morgan = require('morgan')
 
@@ -31,6 +31,7 @@ app.use("/", router);
 // Manejo de errores
 app.use((err, req, res, next) => {
   console.error(err.stack);
+  console.log('err :>> ', err);
   res.status(500).send('Error del servidor');
 });
 
